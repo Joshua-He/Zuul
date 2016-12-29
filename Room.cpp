@@ -12,7 +12,6 @@ Room::Room(char* roomName, char* roomDescription, char* roomeast, char* roomwest
   strcpy(south, roomsouth);
   strcpy(name, roomName);
   strcpy(description, roomDescription);
-  //  itemList = new Items(0, 0, 0, 0, 0);
   //constructor  
 }
 Room::~Room(){
@@ -23,6 +22,8 @@ void Room::showRoom(){
   cout << "The room you are in is: " << name << endl;
   cout << description << endl;
   cout << "There are exits: " << endl;
+  //Checks if the first character in the array is not null charcter
+  //If not, then there is an exit in that direction
   if (north[0] != '\0'){
     cout << "NORTH, ";
   }
@@ -36,17 +37,23 @@ void Room::showRoom(){
     cout << "WEST, ";
   }
   cout << endl;
-  itemList.showItems();
+  char location[100] ="the room ";
+  strcat(location, name); 
+  itemList.showItems(location);
 }
 
 
-void Room::findExit(char* newRoom){
+void Room::findExit(char* newRoom, int &continueWhile){
   strcpy(newRoom, "");
   char direction[100];
-  cout << endl << "Which exit do you want to go to?" << endl;
+  cout << endl << "Which exit do you want to go to? (Type \"QUIT\" to exit the program)" << endl;
   cin >> direction;
   //Takes the users input and goes to a room depending on what direction they choose
   //If there is no exit then it says that exit is not available
+  if (strcmp(direction, "QUIT") == 0){
+    continueWhile = 0;
+
+  }
   if (strcmp(direction, "EAST") == 0){
     if (east[0] != '\0'){
       strcpy( newRoom, east);

@@ -13,6 +13,6 @@ class Room{
   char south[100];
   Items itemList;
   void showRoom();
-  void findExit(char* newRoom);
+  void findExit(char* newRoom, int &continueWhile);
 };
 

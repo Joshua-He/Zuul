@@ -5,8 +5,10 @@ class Items{
  public:
   Items();
   ~Items();
+  void dropItem(Items &destination);
+  void pickupItem(Items &destination);
   void initItems(int i1, int i2, int i3, int i4, int i5);
-  void showItems();
+  void showItems(char* location);
   int item1;
   int item2;
   int item3;
