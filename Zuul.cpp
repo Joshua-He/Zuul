@@ -20,7 +20,7 @@ int main(){
   Items playeritems;
   // set up the 15 rooms 
   setupAllRooms(roomList);
-  cout << "Welcome to Zuul. The winning condition is to take the Money from the bank to the store. When moving between rooms, type \"NORTH\", \"SOUTH\", \"EAST\", or \"WEST\"." << endl;
+  cout << "Welcome to Zuul. The winning condition is to take the Money from the bank to the store. The losing condition is to take the money to the dead end. When moving between rooms, type \"NORTH\", \"SOUTH\", \"EAST\", or \"WEST\"." << endl;
   
   while (inWhile == 1){
     for (int i =0; i<15; i++){
@@ -38,6 +38,11 @@ int main(){
     //wINNING CONDITION
     if (playeritems.item1 == 1 && strcmp(currentRoom, "Store") == 0){
       cout << "You have won! Congratulations you have won! The game will quit now" << endl;
+      inWhile = 0;
+    }
+    //Losing condition
+    if (playeritems.item1 == 1 && strcmp(currentRoom, "Dead End") == 0){
+      cout << "You lost! Sorry!" << endl;
       inWhile = 0;
     }
 
